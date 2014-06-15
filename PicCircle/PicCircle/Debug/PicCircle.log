@@ -1,5 +1,9 @@
 ﻿  PicCircle.cpp
-e:\users\sasas_000\desktop\vs projects\piccircle\piccircle\piccircle.cpp(95): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-e:\users\sasas_000\desktop\vs projects\piccircle\piccircle\piccircle.cpp(98): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-e:\users\sasas_000\desktop\vs projects\piccircle\piccircle\piccircle.cpp(109): warning C4244: 'argument' : conversion from 'double' to 'const unsigned char', possible loss of data
-  PicCircle.vcxproj -> E:\Users\sasas_000\Desktop\VS Projects\PicCircle\Debug\PicCircle.exe
+e:\users\sasas_000\desktop\vs projects\vs-projects\piccircle\piccircle\piccircle.cpp(118): warning C4244: 'argument' : conversion from 'double' to 'const unsigned char', possible loss of data
+e:\users\sasas_000\desktop\vs projects\vs-projects\piccircle\piccircle\piccircle.cpp(47): warning C4101: 'y0' : unreferenced local variable
+e:\users\sasas_000\desktop\vs projects\vs-projects\piccircle\piccircle\piccircle.cpp(47): warning C4101: 'y2' : unreferenced local variable
+e:\users\sasas_000\desktop\vs projects\vs-projects\piccircle\piccircle\piccircle.cpp(47): warning C4101: 'x' : unreferenced local variable
+e:\users\sasas_000\desktop\vs projects\vs-projects\piccircle\piccircle\piccircle.cpp(47): warning C4101: 'y1' : unreferenced local variable
+e:\users\sasas_000\desktop\vs projects\vs-projects\piccircle\piccircle\piccircle.cpp(47): warning C4101: 'R' : unreferenced local variable
+e:\users\sasas_000\desktop\vs projects\vs-projects\piccircle\piccircle\piccircle.cpp(47): warning C4101: 'x0' : unreferenced local variable
+  PicCircle.vcxproj -> E:\Users\sasas_000\Desktop\VS Projects\VS-Projects\PicCircle\Debug\PicCircle.exe

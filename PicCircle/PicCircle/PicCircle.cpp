@@ -44,7 +44,7 @@ void main(void)
 	unsigned char r, g, b;
 	int  H, W;
 	int i, j;
-	int x, x0, y1, y2, y0, R;
+	int x, x0, y1, y2, y0, R; // for m2.bmp R = 94
 
 	bitmap_image image("m2.bmp");
 
@@ -101,6 +101,15 @@ void main(void)
 					Z[y1][x]++;
 					Z[y2][x]++;
 				}
+	/* End */
+
+	/* Start: clear all except 'centers' of cicrles*/
+	for (i = 0; i < H; i++)
+		for (j = 0; j < W; j++)
+			if (Z[i][j] >= 80)
+				Z[i][j] = 0;
+			else
+				Z[i][j] = 1;
 	/* End */
 		
 	/* Start: draw picture 'circles' */

@@ -9,6 +9,7 @@
 #define max(a,b)  (((a) > (b)) ? (a) : (b))
 #define min(a,b)  (((a) < (b)) ? (a) : (b))
 
+unsigned int Z[1000][1000][300];
 
 #define C 20
 
@@ -40,7 +41,6 @@ void main(void)
 {
 	double** Y; // for picture
 	double** G; // for monochrome picture
-	double** Z; // for circles
 	unsigned char r, g, b;
 	int  H, W;
 	int i, j;
@@ -55,7 +55,6 @@ void main(void)
 
 	Y = ArrayCreate(H, W);
 	G = ArrayCreate(H, W);
-	Z = ArrayCreate(H, W);
 
 	/* Start: fill mass with data from picture */
 	for (i = 0; i < H; i++)
@@ -80,47 +79,47 @@ void main(void)
 	/* Start: fill cicrles array with 0 */
 	for (i = 0; i < H; i++)
 		for (j = 0; j < W; j++)
-			Z[i][j] = 0;
+			for (R = 80; R < 105; R++)
+				Z[i][j][R] = 0;
 	/* End */
-
-	printf("Print radius of circles to find \n");
-	scanf("%i", &R);
 
 	/* Start: fill circles array with data from picture */
 	for (y0 = 0; y0 < H; y0++)
 		for (x0 = 0; x0 < W; x0++)
-			if (G[y0][x0] == 0)
-				for (x = max(0, x0 - R); x < min(W, x0 + R); x++)
-				{
-					y1 = y0 + sqrt(R*R - pow(x - x0, 2));
-					y1 = min(y1, H - 1);
+			if (G[y0][x0] == 1)
+				for (R = 70; R < 110; R++)
+					for (x = max(0, x0 - R); x < min(W, x0 + R); x++)
+					{
+						y1 = y0 + (int)sqrt(R*R - pow(x - x0, 2));
 
-					y2 = y0 - sqrt(R*R - pow(x - x0, 2));
-					y2 = max(y2, 0);
+						y2 = y0 - (int)sqrt(R*R - pow(x - x0, 2));
 
-					Z[y1][x]++;
-					Z[y2][x]++;
-				}
+						if (y1 <= H)
+							Z[y1][x][R]++;
+						if (y2 >= 0)
+							Z[y2][x][R]++;
+					}
 	/* End */
 
 	/* Start: clear all except 'centers' of cicrles*/
 	for (i = 0; i < H; i++)
 		for (j = 0; j < W; j++)
-			if (Z[i][j] >= 80)
-				Z[i][j] = 0;
-			else
-				Z[i][j] = 1;
+			for (R = 85; R < 100; R++)
+				if (Z[i][j][R] >= 10)
+					Z[i][j][R] = 0;
+				else
+					Z[i][j][R] = 1;
 	/* End */
-		
+
 	/* Start: draw picture 'circles' */
 	for (i = 0; i < H; i++)
 		for (j = 0; j < W; j++)
-			image1.set_pixel(j, i, Z[i][j] * 255, Z[i][j] * 255, Z[i][j] * 255);
+			for (R = 85; R < 100; R++)
+				image1.set_pixel(j, i, Z[i][j][R] * 255, Z[i][j][R] * 255, Z[i][j][R] * 255);
 	/* End */
 
 	image1.save_image("output.bmp");
 	
 	ArrayDestroy(Y, H);
 	ArrayDestroy(G, H);
-	ArrayDestroy(Z, H);
 }
